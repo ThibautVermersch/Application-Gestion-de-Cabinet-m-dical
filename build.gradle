@@ -31,22 +31,27 @@ javafx {
 }
 
 dependencies {
-	// Log4j2
+    // Log4j2
     implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
     implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
     implementation 'org.slf4j:slf4j-api:2.0.18'
     implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0'
 
+    // Dépendances pour les tests unitaires.
+    // junit-jupiter et junit-platform-launcher doivent avoir la même version.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.11.4'
 
-	// Dépendances pour les tests unitaires.
-    //testImplementation 'org.junit.jupiter:junit-jupiter:5.14.4'
-    // Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:6.1.0'
-    //testImplementation 'org.junit.platform:junit-platform-launcher:1.14.4'
-    testImplementation 'org.junit.platform:junit-platform-launcher:6.1.0'
-    // assertions fluentes pour les tests unitaires.
-//    testImplementation 'org.assertj:assertj-core:3.27.7'
+    // Assertions fluentes pour les tests unitaires.
+    testImplementation 'org.assertj:assertj-core:3.27.7'
 
     // Mockito pour les tests unitaires.
-//    testImplementation "org.mockito:mockito-junit-jupiter:5.23.0"
+    testImplementation "org.mockito:mockito-junit-jupiter:5.15.2"
+}
+
+// l'accès à certains modules internes de la JVM via des arguments JVM.
+test {
+    useJUnitPlatform()
+    jvmArgs '-XX:+EnableDynamicAgentLoading'
 }
