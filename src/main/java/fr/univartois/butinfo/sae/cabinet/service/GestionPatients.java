@@ -29,6 +29,8 @@ public class GestionPatients {
 
     /**
      * Ajoute un patient si son numéro de sécu n'existe pas déjà.
+     *
+     * @param patient le patient à ajouter.
      */
     public void ajouterPatient(Patient patient) {
         if (rechercherParNumeroSecu(patient.getNumeroSecu()) != null) {
@@ -41,6 +43,9 @@ public class GestionPatients {
 
     /**
      * Retourne un patient par son ID, ou null si introuvable.
+     *
+     * @param id l'identifiant du patient recherché.
+     * @return le patient correspondant, ou {@code null} si introuvable.
      */
     public Patient rechercherParId(int id) {
         for (Patient p : patients) {
@@ -51,6 +56,9 @@ public class GestionPatients {
 
     /**
      * Retourne un patient par son numéro de sécurité sociale.
+     *
+     * @param numeroSecu le numéro de sécurité sociale recherché.
+     * @return le patient correspondant, ou {@code null} si introuvable.
      */
     public Patient rechercherParNumeroSecu(String numeroSecu) {
         for (Patient p : patients) {
@@ -61,6 +69,9 @@ public class GestionPatients {
 
     /**
      * Recherche des patients dont le nom ou prénom contient le terme donné (insensible à la casse).
+     *
+     * @param terme le terme à rechercher dans le nom ou le prénom.
+     * @return la liste des patients correspondants.
      */
     public List<Patient> rechercherParNom(String terme) {
         List<Patient> resultats = new ArrayList<>();
@@ -76,6 +87,14 @@ public class GestionPatients {
 
     /**
      * Met à jour les informations d'un patient (sauf ID et numéro de sécu).
+     *
+     * @param id l'identifiant du patient à mettre à jour.
+     * @param nouveauNom le nouveau nom du patient.
+     * @param nouveauPrenom le nouveau prénom du patient.
+     * @param nouveauTel le nouveau numéro de téléphone du patient.
+     * @param nouveauEmail la nouvelle adresse e-mail du patient.
+     * @param nouvelleAdresse la nouvelle adresse postale du patient.
+     * @param nouveauTauxRemboursement le nouveau taux de remboursement du patient.
      */
     public void mettreAJourPatient(int id, String nouveauNom, String nouveauPrenom,
                                        String nouveauTel, String nouveauEmail,
@@ -96,6 +115,7 @@ public class GestionPatients {
 
     /**
      * Supprime un patient par son ID.
+     * @param id L'id du patient à supprimer
      */
     public void supprimerPatient(int id) {
         Patient p = rechercherParId(id);
@@ -109,6 +129,7 @@ public class GestionPatients {
 
     /**
      * Retourne la liste complète des patients (copie défensive).
+     * @return new ArrayList<>(patients) Une liste de patients.
      */
     public List<Patient> listerTousLesPatients() {
         return new ArrayList<>(patients);
@@ -116,6 +137,7 @@ public class GestionPatients {
 
     /**
      * Retourne le nombre total de patients.
+     * @return patients.size()
      */
     public int getNombrePatients() {
         return patients.size();
