@@ -1,6 +1,9 @@
 package fr.univartois.butinfo.sae.cabinet.service;
 
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +12,7 @@ import java.util.List;
  * Fournit les opérations CRUD (Créer, Lire, Mettre à jour, Supprimer).
  */
 public class GestionPatients {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
     // Liste interne des patients enregistrés
     private final List<Patient> patients;
 
@@ -29,11 +32,11 @@ public class GestionPatients {
      */
     public void ajouterPatient(Patient patient) {
         if (rechercherParNumeroSecu(patient.getNumeroSecu()) != null) {
-            System.out.println("ERREUR : Un patient avec ce numéro de sécu existe déjà.");
+            LOGGER.info("ERREUR : Un patient avec ce numéro de sécu existe déjà.");
             return;
         }
         patients.add(patient);
-        System.out.println("Patient ajouté : " + patient.getNomComplet());
+        LOGGER.info("Patient ajouté : " + patient.getNomComplet());
     }
 
     /**
@@ -79,7 +82,7 @@ public class GestionPatients {
                                        String nouvelleAdresse, double nouveauTauxRemboursement) {
         Patient p = rechercherParId(id);
         if (p == null) {
-            System.out.println("ERREUR : Patient ID=" + id + " introuvable.");
+            LOGGER.info("ERREUR : Patient ID=" + id + " introuvable.");
             return;
         }
         p.setNom(nouveauNom);
@@ -88,7 +91,7 @@ public class GestionPatients {
         p.setEmail(nouveauEmail);
         p.setAdresse(nouvelleAdresse);
         p.setTauxRemboursement(nouveauTauxRemboursement);
-        System.out.println("Patient mis à jour : " + p.getNomComplet());
+        LOGGER.info("Patient mis à jour : " + p.getNomComplet());
     }
 
     /**
@@ -101,7 +104,7 @@ public class GestionPatients {
             return;
         }
         patients.remove(p);
-        System.out.println("Patient supprimé : " + p.getNomComplet());
+        LOGGER.info("Patient supprimé : " + p.getNomComplet());
     }
 
     /**
