@@ -17,26 +17,26 @@ Pispisa Mathéo
 
 
 
-| Membre du groupe | Tâches réalisées                             | Ticket associé |
-|------------------|----------------------------------------------|----------------|
-| Mathéo Pispisa   | String builder classe statistique            | #20            |
-| Mayette Noan     | Logger classe GestionOrdonnance              | #22            |
-| Mayette Noan     | Javadoc classe GestionMedecin                | #26            |
-| Mathéo Pispisa   | Javadoc classe GestionPatient                | #27            |
-| Vermersch Thibaut| Javadoc classe GestionRendezVous             | #28            |
-| Roth Yeltaz      | Javadoc classe GestionMedicament, Ordonnance | #29            |
-| Roth Yeltaz      | Javadoc classe Patient, Personne, GestionOrdonnance | #32            |
-| Roth Yeltaz      | Javadoc classe LignePrescription, Medecin, Medicament | ...            |
-| Vermersch Thibaut| Mettre les list en ObservableList            | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
-|                  | ...                                          | ...            |
+| Membre du groupe  | Tâches réalisées                                      | Ticket associé |
+|-------------------|-------------------------------------------------------|----------------|
+| Mathéo Pispisa    | String builder classe statistique                     | #20            |
+| Mayette Noan      | Logger classe GestionOrdonnance                       | #22            |
+| Mayette Noan      | Javadoc classe GestionMedecin                         | #26            |
+| Mathéo Pispisa    | Javadoc classe GestionPatient                         | #27            |
+| Vermersch Thibaut | Javadoc classe GestionRendezVous                      | #28            |
+| Roth Yeltaz       | Javadoc classe GestionMedicament, Ordonnance          | #29            |
+| Roth Yeltaz       | Javadoc classe Patient, Personne, GestionOrdonnance   | #32            |
+| Roth Yeltaz       | Javadoc classe LignePrescription, Medecin, Medicament | ...            |
+| Vermersch Thibaut | Mettre les list en ObservableList                     | ...            |
+| Vermersch Thibaut | Vue Medicament                                        | #38            |
+| Pispisa Mathéo    | Vue medecin                                           | #33            |
+| Pispisa Mathéo    | getPrixTotal dans la classe ordonnance                | #24            |
+| Mayette Noan      | vue patient                                           | #35            |
+| Mayette Noan      | vue accueil                                           | #35            |
+|                   | ...                                                   | ...            |
+|                   | ...                                                   | ...            |
+|                   | ...                                                   | ...            |
+|                   | ...                                                   | ...            |
 
 ## Présentation du code de base
 
