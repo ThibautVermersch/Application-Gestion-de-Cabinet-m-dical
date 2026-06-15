@@ -2,22 +2,41 @@
 
 ## Description du projet et des fonctionnalités implémentées
 
-**À COMPLÉTER**
+Permet de gérer un cabinet médicale. 
+Le projet permet de lister les patients, les médecins, les médicaments et les ordonnances.
+Il est possible de les modifier, supprimer et d'en ajouter
 
 ## Membres du groupe
 
-**À COMPLÉTER**
+Mayette Noan
+Roth Yeltaz
+Vermersch Thibaut
+Pispisa Mathéo
 
 ## Répartition du travail
 
-**TABLEAU À COMPLÉTER**
+
 
 | Membre du groupe | Tâches réalisées                             | Ticket associé |
 |------------------|----------------------------------------------|----------------|
-| ...              | ...                                          | ...            |
-| ...              | ...                                          | ...            |
-| ...              | ...                                          | ...            |
-| ...              | ...                                          | ...            |
+| Mathéo Pispisa   | String builder classe statistique            | #20            |
+| Mayette Noan     | Logger classe GestionOrdonnance              | #22            |
+| Mayette Noan     | Javadoc classe GestionMedecin                | #26            |
+| Mathéo Pispisa   | Javadoc classe GestionPatient                | #27            |
+| Vermersch Thibaut| Javadoc classe GestionRendezVous             | #28            |
+| Roth Yeltaz      | Javadoc classe GestionMedicament, Ordonnance | #29            |
+| Roth Yeltaz      | Javadoc classe Patient, Personne, GestionOrdonnance | #32            |
+| Roth Yeltaz      | Javadoc classe LignePrescription, Medecin, Medicament | ...            |
+| Vermersch Thibaut| Mettre les list en ObservableList            | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
+|                  | ...                                          | ...            |
 
 ## Présentation du code de base
 
