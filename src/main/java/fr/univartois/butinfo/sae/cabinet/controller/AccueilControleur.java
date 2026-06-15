@@ -1,5 +1,6 @@
 package fr.univartois.butinfo.sae.cabinet.controller;
 
+import fr.univartois.butinfo.sae.cabinet.service.GestionMedicaments;
 import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
 import fr.univartois.butinfo.sae.cabinet.controller.PatientFormControleur;
 import javafx.fxml.FXML;
@@ -23,6 +24,9 @@ public class AccueilControleur {
 
     /** Service de gestion des patients (le "modèle" côté patients). */
     private GestionPatients gestionPatients;
+
+    /** Service de gestion des patients (le "modèle" côté patients). */
+    private GestionMedicaments gestionMedicaments;
 
     // ── Fenêtre et scène actuelles ─────────────────────────────────────────────
 
@@ -92,6 +96,42 @@ public class AccueilControleur {
         }
     }
 
+
+    @FXML
+    private void ouvrirMedicaments() {
+        try {
+            // 1. Charger le fichier FXML de la liste des patients
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/view/vueMedicaments.fxml"));
+            Scene sceneMedicament = new Scene(loader.load());
+
+            // 2. Récupérer le contrôleur de cette nouvelle vue
+            MedicamentControleur controleur = loader.getController();
+
+            // 3. Lui transmettre les données dont il a besoin
+            controleur.setGestionMedicaments(gestionMedicaments);
+            controleur.setStage(stage);
+
+            // 4. Lui donner la scène de l'accueil pour qu'il puisse y revenir
+            controleur.setSceneAccueil(sceneAccueil);
+
+            // 5. Afficher la nouvelle scène dans la fenêtre
+            stage.setScene(sceneMedicament);
+            stage.setTitle("Gestion des Medicaments");
+
+        } catch (IOException e) {
+            // Si le fichier FXML est introuvable, on affiche l'erreur
+            System.err.println("Erreur lors du chargement de patient-liste.fxml : " + e.getMessage());
+        }
+    }
+    /**
+     * Permet d'injecter le service de gestion des médicaments depuis l'application principale.
+     * @param gestionMedicaments Le service des médicaments.
+     */
+    public void setGestionMedicaments(GestionMedicaments gestionMedicaments) {
+        this.gestionMedicaments = gestionMedicaments;
+    }
+
     // Tu pourras ajouter ici les méthodes pour les autres vues :
-    // ouvrirMedecins(), ouvrirMedicaments(), etc.
+    //ouvrirMedicaments(), etc.
 }

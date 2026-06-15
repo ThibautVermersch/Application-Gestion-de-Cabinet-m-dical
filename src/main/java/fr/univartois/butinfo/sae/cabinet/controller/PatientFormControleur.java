@@ -25,7 +25,7 @@ public class PatientFormControleur {
     // ── Composants FXML ────────────────────────────────────────────────────────
     // Chaque @FXML correspond à un fx:id dans patient-form.fxml
 
-    @FXML private Label     labelTitre;
+    @FXML private Label labelTitre;
     @FXML private TextField champNom;
     @FXML private TextField champPrenom;
     @FXML private TextField champTelephone;
@@ -34,7 +34,7 @@ public class PatientFormControleur {
     @FXML private TextField champDateNaissance;
     @FXML private TextField champSecu;
     @FXML private TextField champTaux;
-    @FXML private Label     labelErreur;
+    @FXML private Label labelErreur;
 
     // ── Données ────────────────────────────────────────────────────────────────
 
