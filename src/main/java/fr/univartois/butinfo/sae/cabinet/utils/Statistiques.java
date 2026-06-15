@@ -40,7 +40,7 @@ public class Statistiques {
      * Affiche un résumé complet des statistiques du cabinet.
      */
     public String getStatistique() {
-        StringBuilder str = null;
+        StringBuilder str = new StringBuilder();
 
         str.append("\n╔══════════════════════════════════════════╗");
         str.append("║        TABLEAU DE BORD - CABINET MÉDICAL  ║");

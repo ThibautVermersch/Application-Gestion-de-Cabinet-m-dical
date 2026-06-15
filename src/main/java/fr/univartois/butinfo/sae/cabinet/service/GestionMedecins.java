@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Service de gestion des médecins du cabinet.
+ * @version 1.1
  */
 public class GestionMedecins {
     private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
@@ -29,6 +30,8 @@ public class GestionMedecins {
 
     /**
      * Enregistre un nouveau médecin (vérifie l'unicité du numéro d'ordre).
+     *  @param medecin     Un medecin de la classe medecin
+     * 	@since           1.0
      */
     public void ajouterMedecin(Medecin medecin) {
         if (rechercherParNumeroOrdre(medecin.getNumeroOrdre()) != null) {
@@ -36,11 +39,14 @@ public class GestionMedecins {
             return;
         }
         medecins.add(medecin);
-        System.out.println("Médecin ajouté : Dr " + medecin.getNomComplet());
+        LOGGER.info("Médecin ajouté : Dr " + medecin.getNomComplet());
     }
 
     /**
      * Recherche un médecin par son ID.
+     * @param id     L'id d'un médecin pour le rechercher
+     * @since           1.0
+     * @return un medecin s'il est trouvé sinon null
      */
     public Medecin rechercherParId(int id) {
         for (Medecin m : medecins) {
@@ -51,6 +57,9 @@ public class GestionMedecins {
 
     /**
      * Recherche un médecin par son numéro d'ordre.
+     * @param numeroOrdre     Le numéro d'ordre d'un médecin pour le rechercher.
+     * @since           1.0
+     * @return un medecin s'il est trouvé sinon null
      */
     public Medecin rechercherParNumeroOrdre(String numeroOrdre) {
         for (Medecin m : medecins) {
@@ -61,6 +70,9 @@ public class GestionMedecins {
 
     /**
      * Recherche des médecins par nom ou prénom.
+     * @param terme     Le terme pour trouver des médecins.
+     * @since           1.0
+     * @return une liste de médecin.
      */
     public List<Medecin> rechercherParNom(String terme) {
         List<Medecin> resultats = new ArrayList<>();

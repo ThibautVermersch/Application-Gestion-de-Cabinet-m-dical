@@ -37,13 +37,16 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.18'
     implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.26.0'
 
-	// Dépendances pour les tests unitaires.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.14.4'
-    testImplementation 'org.junit.platform:junit-platform-launcher:5.14.4'
 
+	// Dépendances pour les tests unitaires.
+    //testImplementation 'org.junit.jupiter:junit-jupiter:5.14.4'
+    // Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:6.1.0'
+    //testImplementation 'org.junit.platform:junit-platform-launcher:1.14.4'
+    testImplementation 'org.junit.platform:junit-platform-launcher:6.1.0'
     // assertions fluentes pour les tests unitaires.
-    testImplementation 'org.assertj:assertj-core:3.27.7'
+//    testImplementation 'org.assertj:assertj-core:3.27.7'
 
     // Mockito pour les tests unitaires.
-    testImplementation "org.mockito:mockito-junit-jupiter:5.23.0"
+//    testImplementation "org.mockito:mockito-junit-jupiter:5.23.0"
 }
