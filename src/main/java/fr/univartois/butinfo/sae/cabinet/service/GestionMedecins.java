@@ -4,14 +4,15 @@ import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
 import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Service de gestion des médecins du cabinet.
  */
 public class GestionMedecins {
-    private static final Logger LOGGER = LogManager.getLogger("gestion-cabinet-medical-groupe-13");
+    private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
 
     private final List<Medecin> medecins;
 
@@ -31,7 +32,7 @@ public class GestionMedecins {
      */
     public void ajouterMedecin(Medecin medecin) {
         if (rechercherParNumeroOrdre(medecin.getNumeroOrdre()) != null) {
-            System.out.println("ERREUR : Un médecin avec ce numéro d'ordre existe déjà.");
+            LOGGER.info("ERREUR : Un médecin avec ce numéro d'ordre existe déjà.");
             return;
         }
         medecins.add(medecin);
@@ -94,7 +95,7 @@ public class GestionMedecins {
                                        Specialite nouvelleSpecialite) {
         Medecin m = rechercherParId(id);
         if (m == null) {
-            System.out.println("ERREUR : Médecin ID=" + id + " introuvable.");
+            LOGGER.info("ERREUR : Médecin ID=" + id + " introuvable.");
             return;
         }
         m.setNom(nouveauNom);
