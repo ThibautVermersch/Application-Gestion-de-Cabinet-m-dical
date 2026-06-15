@@ -29,12 +29,19 @@
             prefWidth="250"
             onAction="#ouvrirPatients"/>
 
-    <Button text="💊  Gérer les Médicaments" prefWidth="250" onAction="#ouvrirMedicaments"/>
+    <!-- Un bouton par vue. onAction : méthode appelée dans le contrôleur. -->
+    <Button text="👤  Gérer les Medecin"
+            prefWidth="250"
+            onAction="#ouvrirMedecin"/>
+    
+    <Button text="💊  Gérer les Médicaments"
+            prefWidth="250"
+            onAction="#ouvrirMedicaments"/>
 
     <!-- Tu pourras décommenter ces boutons quand tu auras créé les autres vues -->
     <!--
     <Button text="🩺  Gérer les Médecins"    prefWidth="250" onAction="#ouvrirMedecins"/>
-
+    <Button text="💊  Gérer les Médicaments" prefWidth="250" onAction="#ouvrirMedicaments"/>
     <Button text="📅  Gérer les Rendez-Vous" prefWidth="250" onAction="#ouvrirRendezVous"/>
     <Button text="📋  Gérer les Ordonnances" prefWidth="250" onAction="#ouvrirOrdonnances"/>
     -->
