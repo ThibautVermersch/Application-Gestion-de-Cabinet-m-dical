@@ -137,8 +137,20 @@ public class Ordonnance {
    * @return le prix total de l'ordonnance
    */
   public double getPrixTotal() {
-    // TODO : calculer le prix total de l'ordonnance'
-    return 0.0;
+    double prix = 0.0;
+
+    for (int i = 0; i < prescriptions.size(); i++) {
+      LignePrescription lp = prescriptions.get(i);
+      Medicament medicament = lp.getMedicament();
+      double prixMedicament = medicament.getPrix();
+      int quantite = lp.getQuantite();
+      double prixLigne = prixMedicament * quantite;
+      prix = prix + prixLigne;
+    }
+
+    double tauxRemboursement = patient.getTauxRemboursement();
+
+    return prix * (1 - tauxRemboursement);
   }
 
   @Override
