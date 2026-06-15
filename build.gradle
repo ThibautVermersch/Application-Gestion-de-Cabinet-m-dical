@@ -29,3 +29,18 @@ javafx {
     version = '21.0.1'
     modules = ['javafx.controls', 'javafx.fxml']
 }
+
+dependencies {
+	// Log4j2
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+	// Dépendances pour les tests unitaires.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.14.4'
+    testImplementation 'org.junit.platform:junit-platform-launcher:5.14.4'
+
+    // assertions fluentes pour les tests unitaires.
+    testImplementation 'org.assertj:assertj-core:3.27.7'
+
+    // Mockito pour les tests unitaires.
+    testImplementation "org.mockito:mockito-junit-jupiter:5.23.0"
+}
