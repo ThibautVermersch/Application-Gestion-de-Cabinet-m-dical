@@ -4,11 +4,14 @@ import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
 import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Service de gestion des médecins du cabinet.
  */
 public class GestionMedecins {
+    private static final Logger LOGGER = LogManager.getLogger("gestion-cabinet-medical-groupe-13");
 
     private final List<Medecin> medecins;
 
@@ -100,7 +103,7 @@ public class GestionMedecins {
         m.setTelephone(nouveauTel);
         m.setEmail(nouveauEmail);
         m.setSpecialite(nouvelleSpecialite);
-        System.out.println("Médecin mis à jour : Dr " + m.getNomComplet());
+        LOGGER.info("Médecin mis à jour : Dr " + m.getNomComplet());
     }
 
     /**
@@ -109,11 +112,11 @@ public class GestionMedecins {
     public boolean supprimerMedecin(int id) {
         Medecin m = rechercherParId(id);
         if (m == null) {
-            System.out.println("ERREUR : Médecin ID=" + id + " introuvable.");
+            LOGGER.info("ERREUR : Médecin ID=" + id + " introuvable.");
             return false;
         }
         medecins.remove(m);
-        System.out.println("Médecin supprimé : Dr " + m.getNomComplet());
+        LOGGER.info("Médecin supprimé : Dr " + m.getNomComplet());
         return true;
     }
 
