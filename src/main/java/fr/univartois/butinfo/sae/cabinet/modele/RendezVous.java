@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Classe représentant un rendez-vous entre un patient et un médecin.
+ * Classe facade représentant un rendez-vous entre un patient et un médecin.
  */
 public class RendezVous {
 

@@ -1,7 +1,7 @@
 package fr.univartois.butinfo.sae.cabinet.modele;
 
 /**
- * Classe abstraite représentant une personne (base commune pour Patient et Medecin).
+ * Classe facade abstraite représentant une personne (base commune pour Patient et Medecin).
  * Applique le principe d'encapsulation et sert de superclasse pour l'héritage.
  */
 public abstract class Personne {

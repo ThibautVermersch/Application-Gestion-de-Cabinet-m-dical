@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe représentant une ordonnance médicale. Une ordonnance est émise par un médecin pour un
+ * Classe facade représentant une ordonnance médicale. Une ordonnance est émise par un médecin pour un
  * patient et contient une liste de lignes de prescription.
  */
 public class Ordonnance {

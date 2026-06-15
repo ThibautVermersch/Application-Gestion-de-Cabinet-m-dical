@@ -1,7 +1,7 @@
 package fr.univartois.butinfo.sae.cabinet.modele;
 
 /**
- * Classe représentant une ligne de prescription dans une ordonnance. Associe un médicament à sa
+ * Classe facade représentant une ligne de prescription dans une ordonnance. Associe un médicament à sa
  * posologie et durée de traitement.
  */
 public class LignePrescription {

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 /**
- * Classe représentant un patient du cabinet médical.
+ * Classe facade représentant un patient du cabinet médical.
  * Hérite de la classe abstraite Personne.
  */
 public class Patient extends Personne {

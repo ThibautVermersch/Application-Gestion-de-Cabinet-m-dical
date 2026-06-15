@@ -1,7 +1,7 @@
 package fr.univartois.butinfo.sae.cabinet.modele;
 
 /**
- * Classe représentant un médicament disponible dans le système.
+ * Classe facade représentant un médicament disponible dans le système.
  */
 public class Medicament {
 

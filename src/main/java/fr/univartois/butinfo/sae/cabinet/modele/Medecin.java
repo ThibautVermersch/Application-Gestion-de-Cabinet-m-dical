@@ -3,7 +3,7 @@ package fr.univartois.butinfo.sae.cabinet.modele;
 import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
 
 /**
- * Classe représentant un médecin du cabinet. Hérite de la classe abstraite Personne.
+ * Classe facade représentant un médecin du cabinet. Hérite de la classe abstraite Personne.
  */
 public class Medecin extends Personne {
 
