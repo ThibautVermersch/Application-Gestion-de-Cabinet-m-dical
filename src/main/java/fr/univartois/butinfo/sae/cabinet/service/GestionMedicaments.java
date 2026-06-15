@@ -1,23 +1,28 @@
 package fr.univartois.butinfo.sae.cabinet.service;
 
+import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import fr.univartois.butinfo.sae.cabinet.modele.Medicament;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Service de gestion des médicaments disponibles dans le système.
  */
 public class GestionMedicaments {
-    private static final Logger LOGGER = Logger.getLogger("fr.univartois.butinfo.sae.cabinet.service");
-    private final List<Medicament> medicaments;
+    private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
+    private final ObservableList<Medicament> medicaments;
 
     /**
      * Constructeur : initialise la liste vide.
      */
     public GestionMedicaments() {
-        this.medicaments = new ArrayList<>();
+        this.medicaments = FXCollections.observableArrayList();
     }
 
     // -------------------------
@@ -29,7 +34,7 @@ public class GestionMedicaments {
      */
     public void ajouterMedicament(Medicament medicament) {
         if (medicaments.contains(medicament)) {
-            LOGGER.info("ERREUR : Ce médicament existe déjà.");
+            LOGGER.debug("ERREUR : Ce médicament existe déjà.");
             return;
         }
         medicaments.add(medicament);
@@ -49,8 +54,8 @@ public class GestionMedicaments {
     /**
      * Recherche des médicaments dont le nom contient le terme donné.
      */
-    public List<Medicament> rechercherParNom(String terme) {
-        List<Medicament> resultats = new ArrayList<>();
+    public ObservableList<Medicament> rechercherParNom(String terme) {
+        ObservableList<Medicament> resultats = FXCollections.observableArrayList();
         String termeLower = terme.toLowerCase();
         for (Medicament m : medicaments) {
             if (m.getNom().toLowerCase().contains(termeLower)) {
@@ -67,7 +72,7 @@ public class GestionMedicaments {
     public boolean supprimerMedicament(int id) {
         Medicament m = rechercherParId(id);
         if (m == null) {
-            LOGGER.info("ERREUR : Médicament ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Médicament ID=" + id + " introuvable.");
             return false;
         }
         medicaments.remove(m);
@@ -78,8 +83,8 @@ public class GestionMedicaments {
     /**
      * Retourne la liste complète des médicaments.
      */
-    public List<Medicament> listerTousLesMedicaments() {
-        return new ArrayList<>(medicaments);
+    public ObservableList<Medicament> listerTousLesMedicaments() {
+        return this.medicaments;
     }
 
     /**

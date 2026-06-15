@@ -3,7 +3,12 @@ package fr.univartois.butinfo.sae.cabinet.service;
 import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
 import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,13 +20,13 @@ import org.slf4j.LoggerFactory;
 public class GestionMedecins {
     private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
 
-    private final List<Medecin> medecins;
+    private final ObservableList<Medecin> medecins;
 
     /**
      * Constructeur : initialise la liste vide.
      */
     public GestionMedecins() {
-        this.medecins = new ArrayList<>();
+        this.medecins = FXCollections.observableArrayList();
     }
 
     // -------------------------
@@ -35,7 +40,7 @@ public class GestionMedecins {
      */
     public void ajouterMedecin(Medecin medecin) {
         if (rechercherParNumeroOrdre(medecin.getNumeroOrdre()) != null) {
-            LOGGER.info("ERREUR : Un médecin avec ce numéro d'ordre existe déjà.");
+            LOGGER.debug("ERREUR : Un médecin avec ce numéro d'ordre existe déjà.");
             return;
         }
         medecins.add(medecin);
@@ -75,7 +80,7 @@ public class GestionMedecins {
      * @return une liste de médecin.
      */
     public List<Medecin> rechercherParNom(String terme) {
-        List<Medecin> resultats = new ArrayList<>();
+        ObservableList<Medecin> resultats = FXCollections.observableArrayList();
         String termeLower = terme.toLowerCase();
         for (Medecin m : medecins) {
             if (m.getNom().toLowerCase().contains(termeLower) ||
@@ -92,8 +97,8 @@ public class GestionMedecins {
      * @since           1.0
      * @return une liste de médecin.
      */
-    public List<Medecin> rechercherParSpecialite(Specialite specialite) {
-        List<Medecin> resultats = new ArrayList<>();
+    public ObservableList<Medecin> rechercherParSpecialite(Specialite specialite) {
+        ObservableList<Medecin> resultats = FXCollections.observableArrayList();
         for (Medecin m : medecins) {
             if (m.getSpecialite() == specialite) {
                 resultats.add(m);
@@ -117,7 +122,7 @@ public class GestionMedecins {
                                        Specialite nouvelleSpecialite) {
         Medecin m = rechercherParId(id);
         if (m == null) {
-            LOGGER.info("ERREUR : Médecin ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Médecin ID=" + id + " introuvable.");
             return;
         }
         m.setNom(nouveauNom);
@@ -138,7 +143,7 @@ public class GestionMedecins {
     public boolean supprimerMedecin(int id) {
         Medecin m = rechercherParId(id);
         if (m == null) {
-            LOGGER.info("ERREUR : Médecin ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Médecin ID=" + id + " introuvable.");
             return false;
         }
         medecins.remove(m);
@@ -151,8 +156,8 @@ public class GestionMedecins {
      * @since           1.0
      * @return une nouvelle liste de médecin.
      */
-    public List<Medecin> listerTousLesMedecins() {
-        return new ArrayList<>(medecins);
+    public ObservableList<Medecin> listerTousLesMedecins() {
+        return this.medecins;
     }
 
     /**
