@@ -7,11 +7,14 @@ import fr.univartois.butinfo.sae.cabinet.modele.RendezVous;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Service de gestion des rendez-vous médicaux.
  */
 public class GestionRendezVous {
+
+    private static final Logger LOGGER = Logger.getLogger("fr.univartois.butinfo.sae.cabinet.service");
 
     private final List<RendezVous> rendezVous;
 
@@ -34,13 +37,13 @@ public class GestionRendezVous {
                                          LocalDateTime dateHeure, int dureeMinutes, String motif) {
         // Vérification de disponibilité du médecin
         if (!estDisponible(medecin, dateHeure)) {
-            System.out.println("ERREUR : Le Dr " + medecin.getNomComplet() +
+            LOGGER.info("ERREUR : Le Dr " + medecin.getNomComplet() +
                                " n'est pas disponible à ce créneau.");
             return null;
         }
         RendezVous rdv = new RendezVous(patient, medecin, dateHeure, dureeMinutes, motif);
         rendezVous.add(rdv);
-        System.out.println("Rendez-vous créé : " + rdv);
+        LOGGER.info("Rendez-vous créé : " + rdv);
         return rdv;
     }
 
@@ -50,11 +53,11 @@ public class GestionRendezVous {
     public void annulerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
         if (rdv == null) {
-            System.out.println("ERREUR : Rendez-vous ID=" + id + " introuvable.");
+            LOGGER.info("ERREUR : Rendez-vous ID=" + id + " introuvable.");
             return;
         }
         rdv.annuler();
-        System.out.println("Rendez-vous annulé : ID=" + id);
+        LOGGER.info("Rendez-vous annulé : ID=" + id);
     }
 
     /**
@@ -63,11 +66,11 @@ public class GestionRendezVous {
     public void confirmerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
         if (rdv == null) {
-            System.out.println("ERREUR : Rendez-vous ID=" + id + " introuvable.");
+            LOGGER.info("ERREUR : Rendez-vous ID=" + id + " introuvable.");
             return;
         }
         rdv.confirmer();
-        System.out.println("Rendez-vous confirmé : ID=" + id);
+        LOGGER.info("Rendez-vous confirmé : ID=" + id);
     }
 
     /**
@@ -76,11 +79,11 @@ public class GestionRendezVous {
     public boolean terminerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
         if (rdv == null) {
-            System.out.println("ERREUR : Rendez-vous ID=" + id + " introuvable.");
+            LOGGER.info("ERREUR : Rendez-vous ID=" + id + " introuvable.");
             return false;
         }
         rdv.terminer();
-        System.out.println("Rendez-vous terminé : ID=" + id);
+        LOGGER.info("Rendez-vous terminé : ID=" + id);
         return true;
     }
 
