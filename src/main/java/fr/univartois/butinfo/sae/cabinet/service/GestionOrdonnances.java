@@ -20,13 +20,13 @@ public class GestionOrdonnances {
 
 	private static final Logger LOGGER = LogManager.getLogger("fr.univartois.butinfo.sae.cabinet.service");
 	
-    private final List<Ordonnance> ordonnances;
+    private final ObservableList<Ordonnance> ordonnances;
 
     /**
      * Constructeur : initialise la liste vide.
      */
     public GestionOrdonnances() {
-        this.ordonnances = new ArrayList<>();
+        this.ordonnances = FXCollections.observableArrayList();
     }
 
     // -------------------------
@@ -109,8 +109,8 @@ public class GestionOrdonnances {
     /**
      * Retourne la liste complète des ordonnances.
      */
-    public List<Ordonnance> listerToutesLesOrdonnances() {
-        return new ArrayList<>(ordonnances);
+    public ObservableList<Ordonnance> listerToutesLesOrdonnances() {
+        return this.ordonnances;
     }
 
     /**
