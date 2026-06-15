@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 /**
  * Service de gestion des rendez-vous médicaux.
+ * @version 1.1
  */
 public class GestionRendezVous {
 

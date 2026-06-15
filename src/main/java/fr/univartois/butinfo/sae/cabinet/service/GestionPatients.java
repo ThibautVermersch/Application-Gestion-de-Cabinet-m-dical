@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Service de gestion des patients.
  * Fournit les opérations CRUD (Créer, Lire, Mettre à jour, Supprimer).
+ * @version 1.1
  */
 public class GestionPatients {
     private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");

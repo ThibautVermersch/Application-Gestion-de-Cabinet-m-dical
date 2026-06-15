@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Service de gestion des médicaments disponibles dans le système.
+ * @version 1.1
  */
 public class GestionMedicaments {
     private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
@@ -31,6 +32,8 @@ public class GestionMedicaments {
 
     /**
      * Ajoute un médicament s'il n'existe pas déjà (même nom + principe actif).
+     *
+     * @param medicament le médicament à ajouter.
      */
     public void ajouterMedicament(Medicament medicament) {
         if (medicaments.contains(medicament)) {
@@ -43,6 +46,9 @@ public class GestionMedicaments {
 
     /**
      * Recherche un médicament par son ID.
+     *
+     * @param id l'identifiant du médicament recherché.
+     * @return le médicament correspondant, ou {@code null} si introuvable.
      */
     public Medicament rechercherParId(int id) {
         for (Medicament m : medicaments) {
@@ -53,6 +59,9 @@ public class GestionMedicaments {
 
     /**
      * Recherche des médicaments dont le nom contient le terme donné.
+     *
+     * @param terme le terme à rechercher dans le nom du médicament.
+     * @return la liste des médicaments correspondants.
      */
     public ObservableList<Medicament> rechercherParNom(String terme) {
         ObservableList<Medicament> resultats = FXCollections.observableArrayList();
@@ -68,6 +77,9 @@ public class GestionMedicaments {
 
     /**
      * Supprime un médicament par son ID.
+     *
+     * @param id l'identifiant du médicament à supprimer.
+     * @return vrai ou faux si le médicament a été supprimé, {@code false} si introuvable.
      */
     public boolean supprimerMedicament(int id) {
         Medicament m = rechercherParId(id);
@@ -82,6 +94,8 @@ public class GestionMedicaments {
 
     /**
      * Retourne la liste complète des médicaments.
+     *
+     * @return la liste de tous les médicaments enregistrés.
      */
     public ObservableList<Medicament> listerTousLesMedicaments() {
         return this.medicaments;
@@ -89,6 +103,8 @@ public class GestionMedicaments {
 
     /**
      * Retourne le nombre total de médicaments.
+     *
+     * @return le nombre de médicaments enregistrés.
      */
     public int getNombreMedicaments() {
         return medicaments.size();

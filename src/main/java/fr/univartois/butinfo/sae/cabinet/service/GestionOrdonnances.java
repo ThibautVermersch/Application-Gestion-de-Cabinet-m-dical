@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 /**
  * Service de gestion des ordonnances médicales.
+ * @version 1.1
  */
 public class GestionOrdonnances {
 
@@ -32,7 +33,12 @@ public class GestionOrdonnances {
 
     /**
      * Crée une nouvelle ordonnance vide (sans prescriptions) et l'enregistre.
-     * @return l'ordonnance créée
+     *
+     * @param medecin le médecin qui prescrit l'ordonnance.
+     * @param patient le patient concerné par l'ordonnance.
+     * @param dateValidite la date de validité de l'ordonnance.
+     * @param remarques des remarques éventuelles sur l'ordonnance.
+     * @return l'ordonnance créée.
      */
     public Ordonnance creerOrdonnance(Medecin medecin, Patient patient,
                                        LocalDate dateValidite, String remarques) {
@@ -46,6 +52,13 @@ public class GestionOrdonnances {
 
     /**
      * Ajoute une ligne de prescription à une ordonnance existante.
+     *
+     * @param ordonnanceId l'identifiant de l'ordonnance concernée.
+     * @param medicament le médicament prescrit.
+     * @param quantite la quantité prescrite.
+     * @param posologie la posologie associée à la prescription.
+     * @param dureeJours la durée du traitement en jours.
+     * @param instructions des instructions complémentaires pour la prise du médicament.
      */
     public void ajouterPrescription(int ordonnanceId, Medicament medicament, int quantite,
                                         String posologie, int dureeJours, String instructions) {
@@ -62,6 +75,9 @@ public class GestionOrdonnances {
 
     /**
      * Recherche une ordonnance par son ID.
+     *
+     * @param id l'identifiant de l'ordonnance recherchée.
+     * @return l'ordonnance correspondante, ou {@code null} si introuvable.
      */
     public Ordonnance rechercherParId(int id) {
         for (Ordonnance o : ordonnances) {
@@ -72,6 +88,9 @@ public class GestionOrdonnances {
 
     /**
      * Retourne toutes les ordonnances d'un patient.
+     *
+     * @param patient le patient concerné.
+     * @return la liste des ordonnances associées à ce patient.
      */
     public List<Ordonnance> getOrdonnancesPatient(Patient patient) {
         List<Ordonnance> resultats = new ArrayList<>();
@@ -83,6 +102,9 @@ public class GestionOrdonnances {
 
     /**
      * Retourne toutes les ordonnances émises par un médecin.
+     *
+     * @param medecin le médecin concerné.
+     * @return la liste des ordonnances émises par ce médecin.
      */
     public List<Ordonnance> getOrdonnancesMedecin(Medecin medecin) {
         List<Ordonnance> resultats = new ArrayList<>();
@@ -94,6 +116,8 @@ public class GestionOrdonnances {
 
     /**
      * Retourne uniquement les ordonnances encore valides à ce jour.
+     *
+     * @return la liste des ordonnances valides.
      */
     public List<Ordonnance> getOrdonnancesValides() {
         List<Ordonnance> resultats = new ArrayList<>();
@@ -105,6 +129,8 @@ public class GestionOrdonnances {
 
     /**
      * Retourne la liste complète des ordonnances.
+     *
+     * @return la liste de toutes les ordonnances enregistrées.
      */
     public List<Ordonnance> listerToutesLesOrdonnances() {
         return new ArrayList<>(ordonnances);
@@ -112,6 +138,8 @@ public class GestionOrdonnances {
 
     /**
      * Retourne le nombre total d'ordonnances.
+     *
+     * @return le nombre d'ordonnances enregistrées.
      */
     public int getNombreOrdonnances() {
         return ordonnances.size();
