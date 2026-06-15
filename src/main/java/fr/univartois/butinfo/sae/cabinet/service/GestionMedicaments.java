@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 /**
  * Service de gestion des médicaments disponibles dans le système.
+ * @version 1.1
  */
 public class GestionMedicaments {
     private static final Logger LOGGER = Logger.getLogger("fr.univartois.butinfo.sae.cabinet.service");
@@ -26,6 +27,8 @@ public class GestionMedicaments {
 
     /**
      * Ajoute un médicament s'il n'existe pas déjà (même nom + principe actif).
+     *
+     * @param medicament le médicament à ajouter.
      */
     public void ajouterMedicament(Medicament medicament) {
         if (medicaments.contains(medicament)) {
@@ -38,6 +41,9 @@ public class GestionMedicaments {
 
     /**
      * Recherche un médicament par son ID.
+     *
+     * @param id l'identifiant du médicament recherché.
+     * @return le médicament correspondant, ou {@code null} si introuvable.
      */
     public Medicament rechercherParId(int id) {
         for (Medicament m : medicaments) {
@@ -48,6 +54,9 @@ public class GestionMedicaments {
 
     /**
      * Recherche des médicaments dont le nom contient le terme donné.
+     *
+     * @param terme le terme à rechercher dans le nom du médicament.
+     * @return la liste des médicaments correspondants.
      */
     public List<Medicament> rechercherParNom(String terme) {
         List<Medicament> resultats = new ArrayList<>();
@@ -63,6 +72,9 @@ public class GestionMedicaments {
 
     /**
      * Supprime un médicament par son ID.
+     *
+     * @param id l'identifiant du médicament à supprimer.
+     * @return vrai ou faux si le médicament a été supprimé, {@code false} si introuvable.
      */
     public boolean supprimerMedicament(int id) {
         Medicament m = rechercherParId(id);
@@ -77,6 +89,8 @@ public class GestionMedicaments {
 
     /**
      * Retourne la liste complète des médicaments.
+     *
+     * @return la liste de tous les médicaments enregistrés.
      */
     public List<Medicament> listerTousLesMedicaments() {
         return new ArrayList<>(medicaments);
@@ -84,6 +98,8 @@ public class GestionMedicaments {
 
     /**
      * Retourne le nombre total de médicaments.
+     *
+     * @return le nombre de médicaments enregistrés.
      */
     public int getNombreMedicaments() {
         return medicaments.size();
