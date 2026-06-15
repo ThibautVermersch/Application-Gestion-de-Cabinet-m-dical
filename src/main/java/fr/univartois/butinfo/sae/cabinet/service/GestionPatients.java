@@ -1,6 +1,8 @@
 package fr.univartois.butinfo.sae.cabinet.service;
 
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,13 +17,13 @@ import java.util.List;
 public class GestionPatients {
     private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
     // Liste interne des patients enregistrés
-    private final List<Patient> patients;
+    private final ObservableList<Patient> patients;
 
     /**
      * Constructeur : initialise la liste vide.
      */
     public GestionPatients() {
-        this.patients = new ArrayList<>();
+        this.patients = FXCollections.observableArrayList();
     }
 
     // -------------------------
@@ -74,8 +76,8 @@ public class GestionPatients {
      * @param terme le terme à rechercher dans le nom ou le prénom.
      * @return la liste des patients correspondants.
      */
-    public List<Patient> rechercherParNom(String terme) {
-        List<Patient> resultats = new ArrayList<>();
+    public ObservableList<Patient> rechercherParNom(String terme) {
+        ObservableList<Patient> resultats = FXCollections.observableArrayList();
         String termeLower = terme.toLowerCase();
         for (Patient p : patients) {
             if (p.getNom().toLowerCase().contains(termeLower) ||
@@ -102,7 +104,7 @@ public class GestionPatients {
                                        String nouvelleAdresse, double nouveauTauxRemboursement) {
         Patient p = rechercherParId(id);
         if (p == null) {
-            LOGGER.info("ERREUR : Patient ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Patient ID=" + id + " introuvable.");
             return;
         }
         p.setNom(nouveauNom);
@@ -121,7 +123,7 @@ public class GestionPatients {
     public void supprimerPatient(int id) {
         Patient p = rechercherParId(id);
         if (p == null) {
-            System.out.println("ERREUR : Patient ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Patient ID=" + id + " introuvable.");
             return;
         }
         patients.remove(p);
@@ -132,8 +134,8 @@ public class GestionPatients {
      * Retourne la liste complète des patients (copie défensive).
      * @return new ArrayList<>(patients) Une liste de patients.
      */
-    public List<Patient> listerTousLesPatients() {
-        return new ArrayList<>(patients);
+    public ObservableList<Patient> listerTousLesPatients() {
+        return this.patients;
     }
 
     /**

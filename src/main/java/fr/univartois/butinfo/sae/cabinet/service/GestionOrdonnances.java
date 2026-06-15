@@ -8,6 +8,9 @@ import fr.univartois.butinfo.sae.cabinet.modele.Patient;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 /**
@@ -64,12 +67,12 @@ public class GestionOrdonnances {
                                         String posologie, int dureeJours, String instructions) {
         Ordonnance ordo = rechercherParId(ordonnanceId);
         if (ordo == null) {
-            System.out.println("ERREUR : Ordonnance ID=" + ordonnanceId + " introuvable.");
+            LOGGER.debug("ERREUR : Ordonnance ID=" + ordonnanceId + " introuvable.");
             return;
         }
         LignePrescription ligne = new LignePrescription(medicament, quantite, posologie, dureeJours, instructions);
         ordo.ajouterPrescription(ligne);
-        System.out.println("Prescription ajoutée : " + medicament.getNom() +
+        LOGGER.info("Prescription ajoutée : " + medicament.getNom() +
                            " → ordonnance ID=" + ordonnanceId);
     }
 
@@ -92,8 +95,8 @@ public class GestionOrdonnances {
      * @param patient le patient concerné.
      * @return la liste des ordonnances associées à ce patient.
      */
-    public List<Ordonnance> getOrdonnancesPatient(Patient patient) {
-        List<Ordonnance> resultats = new ArrayList<>();
+    public ObservableList<Ordonnance> getOrdonnancesPatient(Patient patient) {
+        ObservableList<Ordonnance> resultats = FXCollections.observableArrayList();
         for (Ordonnance o : ordonnances) {
             if (o.getPatient().equals(patient)) resultats.add(o);
         }
@@ -106,8 +109,8 @@ public class GestionOrdonnances {
      * @param medecin le médecin concerné.
      * @return la liste des ordonnances émises par ce médecin.
      */
-    public List<Ordonnance> getOrdonnancesMedecin(Medecin medecin) {
-        List<Ordonnance> resultats = new ArrayList<>();
+    public ObservableList<Ordonnance> getOrdonnancesMedecin(Medecin medecin) {
+        ObservableList<Ordonnance> resultats = FXCollections.observableArrayList();
         for (Ordonnance o : ordonnances) {
             if (o.getMedecin().equals(medecin)) resultats.add(o);
         }
@@ -119,8 +122,8 @@ public class GestionOrdonnances {
      *
      * @return la liste des ordonnances valides.
      */
-    public List<Ordonnance> getOrdonnancesValides() {
-        List<Ordonnance> resultats = new ArrayList<>();
+    public ObservableList<Ordonnance> getOrdonnancesValides() {
+        ObservableList<Ordonnance> resultats =FXCollections.observableArrayList();
         for (Ordonnance o : ordonnances) {
             if (o.estValide()) resultats.add(o);
         }

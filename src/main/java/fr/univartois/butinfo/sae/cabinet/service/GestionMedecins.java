@@ -79,7 +79,7 @@ public class GestionMedecins {
      * @since           1.0
      * @return une liste de médecin.
      */
-    public List<Medecin> rechercherParNom(String terme) {
+    public ObservableList<Medecin> rechercherParNom(String terme) {
         ObservableList<Medecin> resultats = FXCollections.observableArrayList();
         String termeLower = terme.toLowerCase();
         for (Medecin m : medecins) {
