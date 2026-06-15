@@ -88,6 +88,9 @@ public class GestionMedecins {
 
     /**
      * Retourne tous les médecins d'une spécialité donnée.
+     * @param specialite     La spécialité pour trouver des médecins.
+     * @since           1.0
+     * @return une liste de médecin.
      */
     public List<Medecin> rechercherParSpecialite(Specialite specialite) {
         List<Medecin> resultats = new ArrayList<>();
@@ -101,6 +104,13 @@ public class GestionMedecins {
 
     /**
      * Met à jour les informations d'un médecin.
+     *@param id l'identifiant du médecin à mettre à jour.
+     *@param nouveauNom le nouveau nom du médecin.
+     *@param nouveauPrenom le nouveau prénom du médecin.
+     *@param nouveauTarifConsultation le nouveau tarif horaire du médecin.
+     *@param nouveauTel le nouveau numéro de téléphone du médecin.
+     *@param nouveauEmail la nouvelle adresse e-mail du médecin.
+     *@param nouvelleSpecialite la nouvelle spécialité du médecin.
      */
     public void mettreAJourMedecin(int id, String nouveauNom, String nouveauPrenom, double nouveauTarifConsultation,
                                        String nouveauTel, String nouveauEmail,
@@ -121,6 +131,9 @@ public class GestionMedecins {
 
     /**
      * Supprime un médecin par son ID.
+     * @param id     L'id pour trouver et supprimmer un médecin.
+     * @since           1.0
+     * @return vrai ou faux en fonction de si le médecin est bien supprimé.
      */
     public boolean supprimerMedecin(int id) {
         Medecin m = rechercherParId(id);
@@ -135,6 +148,8 @@ public class GestionMedecins {
 
     /**
      * Retourne la liste complète des médecins.
+     * @since           1.0
+     * @return une nouvelle liste de médecin.
      */
     public List<Medecin> listerTousLesMedecins() {
         return new ArrayList<>(medecins);
@@ -142,6 +157,8 @@ public class GestionMedecins {
 
     /**
      * Retourne le nombre total de médecins.
+     * @since 1.0
+     * @return le nombre de médecins.
      */
     public int getNombreMedecins() {
         return medecins.size();
