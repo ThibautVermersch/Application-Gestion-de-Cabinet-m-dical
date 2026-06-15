@@ -23,6 +23,12 @@ public class Statistiques {
 
     /**
      * Constructeur : injecte tous les services nécessaires.
+     *
+     * @param gestionPatients le service de gestion des patients.
+     * @param gestionMedecins le service de gestion des médecins.
+     * @param gestionMedicaments le service de gestion des médicaments.
+     * @param gestionRendezVous le service de gestion des rendez-vous.
+     * @param gestionOrdonnances le service de gestion des ordonnances.
      */
     public Statistiques(GestionPatients gestionPatients,
                         GestionMedecins gestionMedecins,
@@ -37,7 +43,11 @@ public class Statistiques {
     }
 
     /**
-     * Affiche un résumé complet des statistiques du cabinet.
+     * Construit un résumé complet des statistiques du cabinet : chiffres globaux,
+     * rendez-vous par statut, médecins par spécialité, médecins par nombre de
+     * rendez-vous et ordonnances valides.
+     *
+     * @return une chaîne formatée représentant le tableau de bord du cabinet.
      */
     public String getStatistique() {
         StringBuilder str = new StringBuilder();
@@ -94,12 +104,21 @@ public class Statistiques {
     // Méthodes utilitaires
     // -------------------------
 
-    /** Retourne le nombre de rendez-vous pour un statut donné. */
+    /**
+     * Retourne le nombre de rendez-vous pour un statut donné.
+     *
+     * @param statut le statut recherché.
+     * @return le nombre de rendez-vous ayant ce statut.
+     */
     public int getNombreRendezVousParStatut(StatutRendezVous statut) {
         return gestionRendezVous.getRendezVousParStatut(statut).size();
     }
 
-    /** Retourne le médecin ayant le plus de rendez-vous (ou null si aucun). */
+    /**
+     * Retourne le médecin ayant le plus de rendez-vous.
+     *
+     * @return le médecin le plus actif, ou {@code null} si aucun médecin n'est enregistré.
+     */
     public Medecin getMedecinLePlusActif() {
         Medecin medecinMax = null;
         int max = 0;
@@ -113,6 +132,12 @@ public class Statistiques {
         return medecinMax;
     }
 
+    /**
+     * Retourne une représentation textuelle du module de statistiques.
+     *
+     * @return une chaîne indiquant le nombre de patients, médecins, médicaments,
+     *         rendez-vous et ordonnances.
+     */
     @Override
     public String toString() {
         return "Statistiques { " +
