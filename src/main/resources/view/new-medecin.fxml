@@ -10,7 +10,7 @@
 <VBox maxHeight="1.7976931348623157E308"
       maxWidth="1.7976931348623157E308" spacing="20.0"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="fr.univartois.butinfo.sae.cabinet.controller.MedecinController">
+      fx:controller="fr.univartois.butinfo.sae.cabinet.controller.MedecinFormController">
     <children>
         <TextField fx:id="nom" maxWidth="1.7976931348623157E308" promptText="Nom" />
         <TextField fx:id="prenom" maxWidth="1.7976931348623157E308" promptText="Prénom" />

@@ -1,5 +1,6 @@
 package fr.univartois.butinfo.sae.cabinet.controller;
 
+import fr.univartois.butinfo.sae.cabinet.service.GestionMedecins;
 import fr.univartois.butinfo.sae.cabinet.service.GestionMedicaments;
 import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
 import fr.univartois.butinfo.sae.cabinet.controller.PatientFormControleur;
@@ -25,8 +26,11 @@ public class AccueilControleur {
     /** Service de gestion des patients (le "modèle" côté patients). */
     private GestionPatients gestionPatients;
 
-    /** Service de gestion des patients (le "modèle" côté patients). */
+    /** Service de gestion des medicament (le "modèle" côté medicament). */
     private GestionMedicaments gestionMedicaments;
+
+    /** Service de gestion des medecin (le "modèle" côté medecin). */
+    private GestionMedecins gestionMedecin;
 
     // ── Fenêtre et scène actuelles ─────────────────────────────────────────────
 
@@ -121,7 +125,36 @@ public class AccueilControleur {
 
         } catch (IOException e) {
             // Si le fichier FXML est introuvable, on affiche l'erreur
-            System.err.println("Erreur lors du chargement de patient-liste.fxml : " + e.getMessage());
+            System.err.println("Erreur lors du chargement de vueMedicament.fxml : " + e.getMessage());
+        }
+    }
+
+
+    @FXML
+    private void ouvrirMedecin() {
+        try {
+            // 1. Charger le fichier FXML de la liste des patients
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/view/medecin.fxml"));
+            Scene sceneMedecin = new Scene(loader.load());
+
+            // 2. Récupérer le contrôleur de cette nouvelle vue
+            MedecinListeController controleur = loader.getController();
+
+            // 3. Lui transmettre les données dont il a besoin
+            controleur.setGestionMedecins(gestionMedecin);
+            controleur.setStageEtScene(stage, sceneMedecin);
+
+            // 4. Lui donner la scène de l'accueil pour qu'il puisse y revenir
+            controleur.setSceneAccueil(sceneAccueil);
+
+            // 5. Afficher la nouvelle scène dans la fenêtre
+            stage.setScene(sceneMedecin);
+            stage.setTitle("Gestion des Medicaments");
+
+        } catch (IOException e) {
+            // Si le fichier FXML est introuvable, on affiche l'erreur
+            System.err.println("Erreur lors du chargement de medecin.fxml : " + e.getMessage());
         }
     }
     /**
@@ -130,6 +163,14 @@ public class AccueilControleur {
      */
     public void setGestionMedicaments(GestionMedicaments gestionMedicaments) {
         this.gestionMedicaments = gestionMedicaments;
+    }
+
+    /**
+     * Permet d'injecter le service de gestion des médicaments depuis l'application principale.
+     * @param gestionMedecin Le service des médecins.
+     */
+    public void setGestionMedecin(GestionMedecins gestionMedecin) {
+        this.gestionMedecin = gestionMedecin;
     }
 
     // Tu pourras ajouter ici les méthodes pour les autres vues :

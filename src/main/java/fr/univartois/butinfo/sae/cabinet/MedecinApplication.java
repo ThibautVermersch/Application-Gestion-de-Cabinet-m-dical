@@ -43,7 +43,7 @@ public class MedecinApplication extends Application {
 
         // ── 2. Charger la vue FXML ────────────────────────────────────────────
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                "/fr/univartois/butinfo/sae/cabinet/medecin/medecin-liste.fxml"));
+                "/fr/univartois/butinfo/sae/cabinet/medecin/medecin.fxml"));
         Scene scene = new Scene(loader.load());
 
         // ── 3. Récupérer le contrôleur et lui donner les données ──────────────

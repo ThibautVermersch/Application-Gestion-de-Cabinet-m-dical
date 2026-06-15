@@ -1,8 +1,11 @@
 package fr.univartois.butinfo.sae.cabinet;
 
 import fr.univartois.butinfo.sae.cabinet.controller.AccueilControleur;
+import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
+import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import fr.univartois.butinfo.sae.cabinet.modele.Medicament;
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.service.GestionMedecins;
 import fr.univartois.butinfo.sae.cabinet.service.GestionMedicaments;
 import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
 import javafx.application.Application;
@@ -30,6 +33,7 @@ public class AccueilApplication extends Application {
 
         GestionPatients gestionPatients = new GestionPatients();
         GestionMedicaments gestionMedicaments = new GestionMedicaments();
+        GestionMedecins gestionMedecin = new GestionMedecins();
         gestionPatients.ajouterPatient(new Patient(
                 "Dupont", "Marie",
                 "06 12 34 56 78", "marie.dupont@email.com",
@@ -48,6 +52,7 @@ public class AccueilApplication extends Application {
         gestionMedicaments.ajouterMedicament(new Medicament("paracetamol", "test description", 5.99));
         gestionMedicaments.ajouterMedicament(new Medicament("Doliprane", "Soulage en temps difficile de SAE !", 7.99));
 
+        gestionMedecin.ajouterMedecin(new Medecin("Dagobert", "Jean", "0606060606", "jeanDagobert@gmail.com", "1", Specialite.GYNECOLOGUE));
         // ── 2. Charger la vue FXML de l'accueil ──────────────────────────────
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                 "/view/accueil.fxml"));
@@ -64,6 +69,7 @@ public class AccueilApplication extends Application {
 
         controleur.setGestionMedicaments(gestionMedicaments);
 
+        controleur.setGestionMedecin(gestionMedecin);
         // ── 4. Afficher la fenêtre ────────────────────────────────────────────
         stage.setScene(sceneAccueil);
         stage.setTitle("Cabinet Médical — Accueil");
