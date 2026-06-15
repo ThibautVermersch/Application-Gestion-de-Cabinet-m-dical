@@ -1,7 +1,9 @@
 package fr.univartois.butinfo.sae.cabinet;
 
 import fr.univartois.butinfo.sae.cabinet.controller.AccueilControleur;
+import fr.univartois.butinfo.sae.cabinet.modele.Medicament;
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.service.GestionMedicaments;
 import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +29,7 @@ public class AccueilApplication extends Application {
         // Ici on les crée manuellement pour l'exemple.
 
         GestionPatients gestionPatients = new GestionPatients();
-
+        GestionMedicaments gestionMedicaments = new GestionMedicaments();
         gestionPatients.ajouterPatient(new Patient(
                 "Dupont", "Marie",
                 "06 12 34 56 78", "marie.dupont@email.com",
@@ -43,6 +45,9 @@ public class AccueilApplication extends Application {
                 "1721128620456", 0.70
         ));
 
+        gestionMedicaments.ajouterMedicament(new Medicament("paracetamol", "test description", 5.99));
+        gestionMedicaments.ajouterMedicament(new Medicament("Doliprane", "Soulage en temps difficile de SAE !", 7.99));
+
         // ── 2. Charger la vue FXML de l'accueil ──────────────────────────────
         FXMLLoader loader = new FXMLLoader(getClass().getResource(
                 "/view/accueil.fxml"));
@@ -56,6 +61,8 @@ public class AccueilApplication extends Application {
 
         // Transmettre la stage et la scène pour la navigation
         controleur.setStageEtScene(stage, sceneAccueil);
+
+        controleur.setGestionMedicaments(gestionMedicaments);
 
         // ── 4. Afficher la fenêtre ────────────────────────────────────────────
         stage.setScene(sceneAccueil);
