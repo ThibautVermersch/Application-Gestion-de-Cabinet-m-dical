@@ -28,6 +28,14 @@ public class Main {
 
     private static final Logger LOGGER = Logger.getLogger("fr.univartois.butinfo.sae.service");
 
+    /**
+     * Point d'entrée du programme. Initialise les services de gestion, crée des données
+     * de démonstration (médecins, patients, médicaments, rendez-vous, ordonnances),
+     * effectue des recherches et des statistiques, puis applique des opérations CRUD
+     * avant d'afficher l'état final du système.
+     *
+     * @param args les arguments de la ligne de commande (non utilisés).
+     */
     public static void main(String[] args) {
 
         LOGGER.info("╔═══════════════════════════════════════════╗");
