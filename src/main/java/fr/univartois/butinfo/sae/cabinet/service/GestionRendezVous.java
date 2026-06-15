@@ -4,25 +4,29 @@ import fr.univartois.butinfo.sae.cabinet.enumeration.StatutRendezVous;
 import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
 import fr.univartois.butinfo.sae.cabinet.modele.RendezVous;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Service de gestion des rendez-vous médicaux.
  */
 public class GestionRendezVous {
 
-    private static final Logger LOGGER = Logger.getLogger("fr.univartois.butinfo.sae.cabinet.service");
+    private static final Logger LOGGER = LoggerFactory.getLogger("gestion-cabinet-medical-groupe-13");
 
-    private final List<RendezVous> rendezVous;
+    private final ObservableList<RendezVous> rendezVous;
 
     /**
      * Constructeur : initialise la liste vide.
      */
     public GestionRendezVous() {
-        this.rendezVous = new ArrayList<>();
+        this.rendezVous = FXCollections.observableArrayList();
     }
 
     // -------------------------
@@ -43,7 +47,7 @@ public class GestionRendezVous {
                                          LocalDateTime dateHeure, int dureeMinutes, String motif) {
         // Vérification de disponibilité du médecin
         if (!estDisponible(medecin, dateHeure)) {
-            LOGGER.info("ERREUR : Le Dr " + medecin.getNomComplet() +
+            LOGGER.debug("ERREUR : Le Dr " + medecin.getNomComplet() +
                                " n'est pas disponible à ce créneau.");
             return null;
         }
@@ -61,7 +65,7 @@ public class GestionRendezVous {
     public void annulerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
         if (rdv == null) {
-            LOGGER.info("ERREUR : Rendez-vous ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Rendez-vous ID=" + id + " introuvable.");
             return;
         }
         rdv.annuler();
@@ -76,7 +80,7 @@ public class GestionRendezVous {
     public void confirmerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
         if (rdv == null) {
-            LOGGER.info("ERREUR : Rendez-vous ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Rendez-vous ID=" + id + " introuvable.");
             return;
         }
         rdv.confirmer();
@@ -92,7 +96,7 @@ public class GestionRendezVous {
     public boolean terminerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
         if (rdv == null) {
-            LOGGER.info("ERREUR : Rendez-vous ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Rendez-vous ID=" + id + " introuvable.");
             return false;
         }
         rdv.terminer();
@@ -123,8 +127,8 @@ public class GestionRendezVous {
      * @param patient le patient concerné.
      * @return la liste des rendez-vous associés à ce patient.
      */
-    public List<RendezVous> getRendezVousPatient(Patient patient) {
-        List<RendezVous> resultats = new ArrayList<>();
+    public ObservableList<RendezVous> getRendezVousPatient(Patient patient) {
+        ObservableList<RendezVous> resultats = FXCollections.observableArrayList();
         for (RendezVous rdv : rendezVous) {
             if (rdv.getPatient().equals(patient)) resultats.add(rdv);
         }
@@ -137,8 +141,8 @@ public class GestionRendezVous {
      * @param medecin le médecin concerné.
      * @return la liste des rendez-vous associés à ce médecin.
      */
-    public List<RendezVous> getRendezVousMedecin(Medecin medecin) {
-        List<RendezVous> resultats = new ArrayList<>();
+    public ObservableList<RendezVous> getRendezVousMedecin(Medecin medecin) {
+        ObservableList<RendezVous> resultats = FXCollections.observableArrayList();
         for (RendezVous rdv : rendezVous) {
             if (rdv.getMedecin().equals(medecin)) resultats.add(rdv);
         }
@@ -151,8 +155,8 @@ public class GestionRendezVous {
      * @param statut le statut recherché.
      * @return la liste des rendez-vous ayant ce statut.
      */
-    public List<RendezVous> getRendezVousParStatut(StatutRendezVous statut) {
-        List<RendezVous> resultats = new ArrayList<>();
+    public ObservableList<RendezVous> getRendezVousParStatut(StatutRendezVous statut) {
+        ObservableList<RendezVous> resultats = FXCollections.observableArrayList();
         for (RendezVous rdv : rendezVous) {
             if (rdv.getStatut() == statut) resultats.add(rdv);
         }
@@ -183,8 +187,8 @@ public class GestionRendezVous {
      *
      * @return la liste de tous les rendez-vous enregistrés.
      */
-    public List<RendezVous> listerTousLesRendezVous() {
-        return new ArrayList<>(rendezVous);
+    public ObservableList<RendezVous> listerTousLesRendezVous() {
+        return this.rendezVous;
     }
 
     /**
