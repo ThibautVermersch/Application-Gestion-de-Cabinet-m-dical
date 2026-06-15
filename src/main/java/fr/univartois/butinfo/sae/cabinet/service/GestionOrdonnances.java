@@ -67,13 +67,23 @@ public class GestionOrdonnances {
                                         String posologie, int dureeJours, String instructions) {
         Ordonnance ordo = rechercherParId(ordonnanceId);
         if (ordo == null) {
+
             LOGGER.debug("ERREUR : Ordonnance ID=" + ordonnanceId + " introuvable.");
+
+        	LOGGER.debug("ERREUR : Ordonnance ID = {} introuvable", ordonnanceId);
+           
+
             return;
         }
         LignePrescription ligne = new LignePrescription(medicament, quantite, posologie, dureeJours, instructions);
         ordo.ajouterPrescription(ligne);
+
         LOGGER.info("Prescription ajoutée : " + medicament.getNom() +
                            " → ordonnance ID=" + ordonnanceId);
+
+        LOGGER.info("Prescription ajoutée : {} → ordonnance ID= {}",medicament.getNom(),ordonnanceId);
+        
+
     }
 
     /**
