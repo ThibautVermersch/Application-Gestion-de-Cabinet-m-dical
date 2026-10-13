@@ -18,6 +18,9 @@ public class Recherche {
 
     /**
      * Constructeur : injecte les services nécessaires.
+     *
+     * @param gestionPatients le service de gestion des patients.
+     * @param gestionMedecins le service de gestion des médecins.
      */
     public Recherche(GestionPatients gestionPatients, GestionMedecins gestionMedecins) {
         this.gestionPatients = gestionPatients;
@@ -30,6 +33,9 @@ public class Recherche {
 
     /**
      * Recherche des patients par nom ou prénom.
+     *
+     * @param terme le terme à rechercher dans le nom ou le prénom.
+     * @return la liste des patients correspondants.
      */
     public List<Patient> rechercherPatientParNom(String terme) {
         List<Patient> resultats = gestionPatients.rechercherParNom(terme);
@@ -39,6 +45,9 @@ public class Recherche {
 
     /**
      * Recherche un patient par son numéro de sécurité sociale.
+     *
+     * @param numeroSecu le numéro de sécurité sociale recherché.
+     * @return le patient correspondant, ou {@code null} si introuvable.
      */
     public Patient rechercherPatientParSecu(String numeroSecu) {
         Patient p = gestionPatients.rechercherParNumeroSecu(numeroSecu);
@@ -56,6 +65,9 @@ public class Recherche {
 
     /**
      * Recherche des médecins par nom ou prénom.
+     *
+     * @param terme le terme à rechercher dans le nom ou le prénom.
+     * @return la liste des médecins correspondants.
      */
     public List<Medecin> rechercherMedecinParNom(String terme) {
         List<Medecin> resultats = gestionMedecins.rechercherParNom(terme);
@@ -65,6 +77,9 @@ public class Recherche {
 
     /**
      * Recherche des médecins par spécialité.
+     *
+     * @param specialite la spécialité recherchée.
+     * @return la liste des médecins correspondants.
      */
     public List<Medecin> rechercherMedecinParSpecialite(Specialite specialite) {
         List<Medecin> resultats = gestionMedecins.rechercherParSpecialite(specialite);
@@ -75,6 +90,9 @@ public class Recherche {
 
     /**
      * Recherche un médecin par son numéro d'ordre.
+     *
+     * @param numeroOrdre le numéro d'ordre recherché.
+     * @return le médecin correspondant, ou {@code null} si introuvable.
      */
     public Medecin rechercherMedecinParOrdre(String numeroOrdre) {
         Medecin m = gestionMedecins.rechercherParNumeroOrdre(numeroOrdre);
@@ -90,6 +108,12 @@ public class Recherche {
     // Affichage des résultats
     // -------------------------
 
+    /**
+     * Affiche la liste des patients trouvés avec un titre descriptif.
+     *
+     * @param liste la liste des patients à afficher.
+     * @param titre le titre décrivant la recherche effectuée.
+     */
     private void afficherResultatsPatients(List<Patient> liste, String titre) {
         System.out.println("--- " + titre + " (" + liste.size() + " résultat(s)) ---");
         if (liste.isEmpty()) {
@@ -99,6 +123,12 @@ public class Recherche {
         }
     }
 
+    /**
+     * Affiche la liste des médecins trouvés avec un titre descriptif.
+     *
+     * @param liste la liste des médecins à afficher.
+     * @param titre le titre décrivant la recherche effectuée.
+     */
     private void afficherResultatsMedecins(List<Medecin> liste, String titre) {
         System.out.println("--- " + titre + " (" + liste.size() + " résultat(s)) ---");
         if (liste.isEmpty()) {
@@ -108,6 +138,11 @@ public class Recherche {
         }
     }
 
+    /**
+     * Retourne une représentation textuelle du module de recherche.
+     *
+     * @return une chaîne indiquant le nombre de patients et de médecins disponibles.
+     */
     @Override
     public String toString() {
         return "Module Recherche { patients=" + gestionPatients.getNombrePatients() +

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    GridPane : une grille. Chaque composant est placé dans une cellule.
+    columnIndex=0 → colonne gauche (les labels)
+    columnIndex=1 → colonne droite (les champs de saisie)
+-->
+<VBox spacing="15"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fr.univartois.butinfo.sae.cabinet.controller.PatientFormControleur">
+
+    <padding>
+        <Insets top="25" right="30" bottom="25" left="30"/>
+    </padding>
+
+    <!-- Titre : change dynamiquement (Ajout ou Modification) -->
+    <Label fx:id="labelTitre" text="Ajouter un patient"
+           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="12" vgap="10">
+
+        <!-- Ligne 0 : Nom -->
+        <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="champNom" prefWidth="250"
+                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 1 : Prénom -->
+        <Label text="Prénom :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="champPrenom" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 2 : Téléphone -->
+        <Label text="Téléphone :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="champTelephone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 3 : Email -->
+        <Label text="Email :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="champEmail" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 4 : Adresse -->
+        <Label text="Adresse :" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="champAdresse" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 5 : Date de naissance (format AAAA-MM-JJ) -->
+        <Label text="Date naissance\n(AAAA-MM-JJ) :" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <TextField fx:id="champDateNaissance" promptText="ex: 1990-05-21"
+                   GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 6 : Numéro de sécu (désactivé en modification) -->
+        <Label text="N° Sécu :" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <TextField fx:id="champSecu" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <!-- Ligne 7 : Taux de remboursement -->
+        <Label text="Taux remboursement\n(ex: 0.75) :" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <TextField fx:id="champTaux" promptText="ex: 0.75"
+                   GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <!-- Label d'erreur (rouge, caché par défaut) -->
+    <Label fx:id="labelErreur" style="-fx-text-fill: red;" text=""/>
+
+    <!-- Boutons Valider / Annuler -->
+    <HBox spacing="10">
+        <Button text="Valider"  onAction="#valider"/>
+        <Button text="Annuler" onAction="#annuler"/>
+    </HBox>
+
+</VBox>

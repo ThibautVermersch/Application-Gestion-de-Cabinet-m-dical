@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="PropertiesConfig">
+
+    <Properties>
+        <Property name="filename">logs</Property>
+    </Properties>
+
+    <Appenders>
+
+        <Console name="ConsoleMain" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss} %c{1} - %msg%n"/>
+        </Console>
+
+        <Console name="ConsolePackage" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss} %c{1} - %msg%n"/>
+        </Console>
+
+        <File name="logs" fileName="${filename}/logs.log">
+            <PatternLayout pattern="%msg%n"/>
+        </File>
+
+    </Appenders>
+
+
+    <Loggers>
+
+        <Logger name="fr.univartois.butinfo.sae.cabinet" level="debug" additivity="true">
+            <AppenderRef ref="logs"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="ConsoleMain"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>

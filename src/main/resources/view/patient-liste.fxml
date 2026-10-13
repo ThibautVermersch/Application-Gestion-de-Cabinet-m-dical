@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    HBox : une boîte qui place les éléments CÔTE À CÔTE (horizontalement).
+    À gauche : la ListView (la liste des patients).
+    À droite : les détails du patient sélectionné.
+-->
+<HBox spacing="20"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="fr.univartois.butinfo.sae.cabinet.controller.PatientListeControleur">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- ===== CÔTÉ GAUCHE : la liste ===== -->
+    <VBox spacing="10" prefWidth="220">
+        <Label text="Liste des patients" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+        <!--
+            fx:id="listePatients" : le nom que le contrôleur utilisera
+            pour accéder à ce composant en Java.
+        -->
+        <ListView fx:id="listePatients" prefHeight="400"/>
+
+        <!-- Boutons sous la liste -->
+        <HBox spacing="8">
+            <Button text="Ajouter"    onAction="#ajouterPatient"/>
+            <Button text="Modifier"   onAction="#modifierPatient"/>
+            <Button text="Supprimer"  onAction="#supprimerPatient"/>
+        </HBox>
+
+        <!-- Bouton retour accueil -->
+        <Button text="Retour accueil" onAction="#retourAccueil" prefWidth="220"/>
+    </VBox>
+
+    <!-- Séparateur vertical -->
+    <Separator orientation="VERTICAL"/>
+
+    <!-- ===== CÔTÉ DROIT : les détails ===== -->
+    <VBox spacing="10" prefWidth="350">
+        <Label text="Détails du patient" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+        <!-- Grille de 2 colonnes : label à gauche, valeur à droite -->
+        <GridPane hgap="10" vgap="8">
+
+            <Label text="Nom :"          GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="labelNom"      GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Prénom :"       GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="labelPrenom"   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Téléphone :"    GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="labelTel"      GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Email :"        GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="labelEmail"    GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+            <Label text="Adresse :"      GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Label fx:id="labelAdresse"  GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+            <Label text="Naissance :"    GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <Label fx:id="labelNaissance" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+            <Label text="N° Sécu :"      GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <Label fx:id="labelSecu"     GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+            <Label text="Remboursement :" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+            <Label fx:id="labelTaux"     GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+        </GridPane>
+    </VBox>
+
+</HBox>
