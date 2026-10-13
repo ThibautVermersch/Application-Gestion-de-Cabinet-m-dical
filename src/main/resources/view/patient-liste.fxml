@@ -30,13 +30,13 @@
 
         <!-- Boutons sous la liste -->
         <HBox spacing="8">
-            <Button text="➕ Ajouter"    onAction="#ajouterPatient"/>
-            <Button text="✏️ Modifier"   onAction="#modifierPatient"/>
-            <Button text="🗑️ Supprimer"  onAction="#supprimerPatient"/>
+            <Button text="Ajouter"    onAction="#ajouterPatient"/>
+            <Button text="Modifier"   onAction="#modifierPatient"/>
+            <Button text="Supprimer"  onAction="#supprimerPatient"/>
         </HBox>
 
         <!-- Bouton retour accueil -->
-        <Button text="⬅️ Retour accueil" onAction="#retourAccueil" prefWidth="220"/>
+        <Button text="Retour accueil" onAction="#retourAccueil" prefWidth="220"/>
     </VBox>
 
     <!-- Séparateur vertical -->

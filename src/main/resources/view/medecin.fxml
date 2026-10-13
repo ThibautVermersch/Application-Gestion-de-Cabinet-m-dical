@@ -22,13 +22,13 @@
 
                 <HBox alignment="CENTER" spacing="10.0">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#addMedecin" text="➕ Ajouter" />
-                        <Button mnemonicParsing="false" onAction="#modifMedecin" text="✏️ Modifier" />
-                        <Button mnemonicParsing="false" onAction="#delMedecin" text="🗑️ Supprimer" />
+                        <Button mnemonicParsing="false" onAction="#addMedecin" text="Ajouter" />
+                        <Button mnemonicParsing="false" onAction="#modifMedecin" text="Modifier" />
+                        <Button mnemonicParsing="false" onAction="#delMedecin" text="Supprimer" />
                     </children>
                 </HBox>
 
-                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#retourAccueil" text="⬅️ Retour Accueil" style="-fx-background-color: #e0e0e0;" />
+                <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#retourAccueil" text="Retour Accueil" style="-fx-background-color: #e0e0e0;" />
             </children>
         </VBox>
 

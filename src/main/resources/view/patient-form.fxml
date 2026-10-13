@@ -65,8 +65,8 @@
 
     <!-- Boutons Valider / Annuler -->
     <HBox spacing="10">
-        <Button text="✅ Valider"  onAction="#valider"/>
-        <Button text="❌ Annuler" onAction="#annuler"/>
+        <Button text="Valider"  onAction="#valider"/>
+        <Button text="Annuler" onAction="#annuler"/>
     </HBox>
 
 </VBox>

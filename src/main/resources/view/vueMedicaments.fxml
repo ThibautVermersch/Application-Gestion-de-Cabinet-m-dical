@@ -19,12 +19,12 @@
         <ListView fx:id="listeMedicaments" prefHeight="400"/>
 
         <HBox spacing="8">
-            <Button text="➕ Ajouter"    onAction="#ajouterMedicament"/>
-            <Button text="✏️ Modifier"   onAction="#modifierMedicament"/>
-            <Button text="🗑️ Supprimer"  onAction="#supprimerMedicament"/>
+            <Button text="Ajouter"    onAction="#ajouterMedicament"/>
+            <Button text="Modifier"   onAction="#modifierMedicament"/>
+            <Button text="Supprimer"  onAction="#supprimerMedicament"/>
         </HBox>
 
-        <Button text="⬅️ Retour accueil" onAction="#retourAccueil" prefWidth="250"/>
+        <Button text="Retour accueil" onAction="#retourAccueil" prefWidth="250"/>
     </VBox>
 
     <Separator orientation="VERTICAL"/>

@@ -249,4 +249,8 @@ public class Ordonnance {
     }
     return sb.toString();
   }
+
+  public double calculerPrix() {
+    return this.getPrixTotal();
+  }
 }
